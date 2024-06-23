@@ -13,8 +13,8 @@ class WelcomeImage extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "JB Store",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          "JB STORE",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         const SizedBox(height: defaultPadding * 2),
         Row(
@@ -23,7 +23,7 @@ class WelcomeImage extends StatelessWidget {
             Expanded(
               flex: 8,
               child: SvgPicture.asset(
-                "assets/icons/onboarding.svg",
+                "assets/icons/wellcome.svg",
                 height: 250,
                 width: 250,
               ),

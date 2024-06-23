@@ -14,7 +14,7 @@ class LoginScreenTopImage extends StatelessWidget {
       children: [
         const Text(
           "LOGIN",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         const SizedBox(height: defaultPadding * 2),
         Row(
@@ -23,7 +23,7 @@ class LoginScreenTopImage extends StatelessWidget {
             Expanded(
               flex: 8,
               child: SvgPicture.asset(
-                "assets/icons/coffee_shop_login.svg",
+                "assets/icons/login2.svg",
                 height: 250,
                 width: 250,
               ),
