@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:final_project_mikti/final_project/repository/ProductRepository.dart';
 import 'package:final_project_mikti/final_project/service/api_service.dart';
+import 'package:final_project_mikti/final_project/ui/auth/Screens/Login/auth_login/auth_login.dart';
+import 'package:final_project_mikti/final_project/ui/auth/Screens/Welcome/welcome_screen.dart';
 import 'package:final_project_mikti/final_project/ui/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
 import '../model/product.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -26,7 +29,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   late ProductRepository productRepository;
   late Future<List<Product>> productsFuture;
   late List<Widget> _pages;
@@ -40,8 +42,7 @@ class _HomePageState extends State<HomePage> {
     productsFuture = productRepository.fetchProducts();
 
     _pages = [
-      HomeScreen(productsFuture: productsFuture,
-        productRepository: productRepository,),
+      HomeScreen(productsFuture: productsFuture, productRepository: productRepository),
       ProfileScreen(),
     ];
   }
@@ -53,6 +54,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('JB Store'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              AuthLogin auth = AuthLogin();
+              await auth.signOut();
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                (route) => false,
+              );
+            },
+          ),
+        ],
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -76,5 +91,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
