@@ -2,7 +2,7 @@
 import 'package:intl/intl.dart';
 
 double convertUsdToIdr(double usdAmount) {
-  final double conversionRate = 16500.50;
+  const double conversionRate = 16500.50;
   return usdAmount * conversionRate;
 }
 

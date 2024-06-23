@@ -45,10 +45,6 @@ class SuccessBuyScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => HomePage()),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                ),
                 child: const Text('Go to Home'),
               ),
             ],

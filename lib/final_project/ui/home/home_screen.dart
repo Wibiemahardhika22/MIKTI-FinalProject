@@ -21,21 +21,6 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Search Bar
-          // Padding(
-          //   padding: const EdgeInsets.all(16.0),
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //       hintText: 'Search...',
-          //       prefixIcon: Icon(Icons.search),
-          //       border: OutlineInputBorder(
-          //         borderRadius: BorderRadius.circular(8.0),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-
-          // Carousel Slider
           CarouselSlider(
             items: [
               Container(
@@ -85,7 +70,7 @@ class HomeScreen extends StatelessWidget {
               enlargeCenterPage: true,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           // Product List
@@ -101,9 +86,17 @@ class HomeScreen extends StatelessWidget {
                 return Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 4),
-                      child: ElevatedButton(
-                        onPressed: () {
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search...',
+                          prefixIcon: const Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        onTap: (){
+                          FocusScope.of(context).requestFocus(FocusNode());
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -114,12 +107,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text('Search dan Filter'),
                       ),
                     ),
                     ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: products.length,
                       itemBuilder: (context, index) {
                         final product = products[index];

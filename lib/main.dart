@@ -1,14 +1,12 @@
 import 'package:final_project_mikti/final_project/ui/auth/constants.dart';
 import 'package:final_project_mikti/final_project/ui/auth/firebase_options.dart';
-import 'package:final_project_mikti/final_project/ui/home_page.dart';
 import 'package:final_project_mikti/final_project/ui/splash_screen/splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'final_project/model/product.dart';
 import 'final_project/ui/detail/product_detail_screen.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +14,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   bool isLoggedIn = await checkLoginStatus();
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+  bool isOnboarding = await checkOnboardingStatus();
+  runApp(MyApp(isLoggedIn: isLoggedIn, isOnboarding: isOnboarding));
 }
 
 Future<bool> checkLoginStatus() async {
@@ -24,10 +23,20 @@ Future<bool> checkLoginStatus() async {
   return prefs.getBool('isLoggedIn') ?? false;
 }
 
+Future<bool> checkOnboardingStatus() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('onboarding') ?? false;
+}
+
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
+  final bool isOnboarding;
 
-  const MyApp({Key? key, required this.isLoggedIn}) : super(key: key);
+  const MyApp({
+    Key? key,
+    required this.isLoggedIn,
+    required this.isOnboarding,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +71,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: isLoggedIn ? HomePage() : const SplashScreen(),
+      home: SplashScreen(isLogin: isLoggedIn, isOnboarding: isOnboarding),
       onGenerateRoute: (settings) {
         if (settings.name == ProductDetailScreen.routeName) {
           final product = settings.arguments as Product;

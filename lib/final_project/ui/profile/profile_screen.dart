@@ -20,7 +20,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,124 +31,124 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 190,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.person,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   username,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.facebook,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   facebook,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.cake,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   birthdate,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.phone,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   phone,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.email,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   email,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                const Icon(
                   Icons.place,
                   color: Colors.black,
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   address,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
@@ -180,7 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     });
                   }
                 },
-                child: Text('Edit Profile'),
+                child: const Text('Edit Profile'),
               ),
             ),
           ],

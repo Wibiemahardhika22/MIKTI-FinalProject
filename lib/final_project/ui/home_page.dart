@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
     _pages = [
       HomeScreen(productsFuture: productsFuture, productRepository: productRepository),
-      ProfileScreen(),
+      const ProfileScreen(),
     ];
   }
 
@@ -53,16 +53,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('JB Store'),
+        automaticallyImplyLeading: false,
+        title: const Text('JB Store'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () async {
               AuthLogin auth = AuthLogin();
               await auth.signOut();
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
                 (route) => false,
               );
             },
@@ -78,11 +79,11 @@ class _HomePageState extends State<HomePage> {
           });
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),

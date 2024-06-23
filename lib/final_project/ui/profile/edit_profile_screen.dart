@@ -10,7 +10,7 @@ class EditProfileScreen extends StatefulWidget {
   final String address;
 
   const EditProfileScreen({
-    Key? key,
+    super.key,
     required this.name,
     required this.username,
     required this.facebook,
@@ -18,7 +18,7 @@ class EditProfileScreen extends StatefulWidget {
     required this.phone,
     required this.email,
     required this.address,
-  }) : super(key: key);
+  });
 
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
@@ -73,7 +73,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
         centerTitle: true,
       ),
       body: Padding(
@@ -82,47 +82,47 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             TextFormField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _usernameController,
-              decoration: InputDecoration(labelText: 'Username'),
+              decoration: const InputDecoration(labelText: 'Username'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _facebookController,
-              decoration: InputDecoration(labelText: 'Facebook'),
+              decoration: const InputDecoration(labelText: 'Facebook'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _birthdateController,
-              decoration: InputDecoration(labelText: 'Birthdate'),
+              decoration: const InputDecoration(labelText: 'Birthdate'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _phoneController,
-              decoration: InputDecoration(labelText: 'Phone'),
+              decoration: const InputDecoration(labelText: 'Phone'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(labelText: 'Email'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
               controller: _addressController,
-              decoration: InputDecoration(labelText: 'Address'),
+              decoration: const InputDecoration(labelText: 'Address'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: _saveProfile,
-                child: Text('Save'),
+                child: const Text('Save'),
                 style: ElevatedButton.styleFrom(
                   padding:
-                  EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                  minimumSize: Size(100, 36),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  minimumSize: const Size(100, 36),
                 ),
               ),
             ),

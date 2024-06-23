@@ -18,55 +18,71 @@ class ProductDetailScreen extends StatelessWidget {
     final formattedIdrPrice = formatCurrency(idrPrice);
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title),
+        title: const Text('Detail Produk'),
       ),
-      body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Container(
-                        width: 128,
-                        height: 128,
-                        clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Image.network(
-                          product.image,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
+      body: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    width: 128,
+                    height: 128,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
                     ),
-
-                    SizedBox(height: 16.0),
-                    Text('Rp $formattedIdrPrice', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-
-                    SizedBox(height: 4.0),
-                    Text(
-                      product.title,
-                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
+                    child: Image.network(
+                      product.image,
+                      fit: BoxFit.contain,
                     ),
-                    SizedBox(height: 16.0),
-                    Text(
-                      product.description,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                const SizedBox(height: 24.0),
+                Text(
+                  'Rp $formattedIdrPrice',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  product.title,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  'Kategori: ${product.category}',
+                  style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: kPrimaryColor),
+                ),
+                const SizedBox(height: 16.0),
+                const Divider(
+                  height: 2,
+                  thickness: 2,
+                ),
+                const SizedBox(height: 16.0),
+                const Text('Deskripsi',
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                const SizedBox(height: 4.0),
+                Text(
+                  product.description,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
             ),
-          ]
-      ),
+          ),
+        ),
+      ]),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(left: 16, right: 16, bottom: 32),
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
         child: ElevatedButton(
-          child: Text('Beli', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white, fontSize: 16),),
-
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -74,12 +90,15 @@ class ProductDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
               ),
               builder: (BuildContext context) {
-                return CustomBottomSheet();
+                return CustomBottomSheet(image: product.image);
               },
             );
           },
-          style: ElevatedButton.styleFrom(
-              backgroundColor: kPrimaryColor
+          style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
+          child: const Text(
+            'Beli',
+            style: TextStyle(
+                fontWeight: FontWeight.w600, color: Colors.white, fontSize: 16),
           ),
         ),
       ),
