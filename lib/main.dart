@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'final_project/model/product.dart';
+import 'final_project/ui/detail/product_detail_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +63,18 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: isLoggedIn ? HomePage() : const SplashScreen(),
+      onGenerateRoute: (settings) {
+        if (settings.name == ProductDetailScreen.routeName) {
+          final product = settings.arguments as Product;
+          return MaterialPageRoute(
+            builder: (context) {
+              return ProductDetailScreen(product: product);
+            },
+          );
+        }
+        assert(false, 'Need to implement ${settings.name}');
+        return null;
+      },
     );
   }
 }
